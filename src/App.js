@@ -1,28 +1,34 @@
-import { useState } from "react";
-import ColourSelector from "./ColourSelector";
-import Selection from "./Selection";
-import "./App.css";
+import React, { useState } from "react";
+import ColourSelector from "./components/ColourSelector";
+import Selection from "./components/Selection";
 
 function App() {
   const [selectedColor, setSelectedColor] = useState("");
 
-  // Handler function to update color
-  const handleColorSelect = (color) => {
+  const config = [
+    { color: "red", label: "Red" },
+    { color: "blue", label: "Blue" },
+    { color: "green", label: "Green" },
+  ];
+
+  const handleColorChange = (color) => {
     setSelectedColor(color);
   };
 
   return (
     <div className="App">
-      <h1>Handler Prop Demo</h1>
+      <h1>Passing Handler Prop in React</h1>
 
-      {/* Pass handler and color options */}
-      <ColourSelector
-        colors={["red", "blue", "green"]}
-        onColorSelect={handleColorSelect}
-      />
+      {config.map((item, index) => (
+        <ColourSelector
+          key={index}
+          color={item.color}
+          label={item.label}
+          setSelectedColor={handleColorChange}
+        />
+      ))}
 
-      {/* Render three selection boxes */}
-      <div className="box-container">
+      <div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
         <Selection color={selectedColor} />
         <Selection color={selectedColor} />
         <Selection color={selectedColor} />
