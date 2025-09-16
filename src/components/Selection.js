@@ -1,24 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const Selection = ({ color }) => {
-  const [bgColor, setBgColor] = useState("");
-
-  useEffect(() => {
-    setBgColor(color);
-  }, [color]);
-
+function Selection({ selectedColor }) {
   return (
     <div
       className="fix-box"
       style={{
         width: "100px",
         height: "100px",
-        border: "1px solid black",
-        backgroundColor: bgColor,
+        margin: "10px",
+        backgroundColor: selectedColor || "lightgray",
+        border: "1px solid #000",
       }}
     ></div>
   );
-};
+}
 
 export default Selection;
 
