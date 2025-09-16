@@ -5,36 +5,36 @@ import Selection from "./components/Selection";
 function App() {
   const [selectedColor, setSelectedColor] = useState("");
 
-  const config = [
-    { color: "red", label: "Red" },
-    { color: "blue", label: "Blue" },
-    { color: "green", label: "Green" },
-  ];
-
+  // handler function
   const handleColorChange = (color) => {
     setSelectedColor(color);
   };
 
-  return (
-    <div className="App">
-      <h1>Passing Handler Prop in React</h1>
+  // list of colors (can be extended)
+  const colours = ["red", "blue", "green"];
 
-      {config.map((item, index) => (
+  return (
+    <div className="App" style={{ textAlign: "center", marginTop: "20px" }}>
+      <h1>Handler Prop Demo</h1>
+
+      {/* render buttons for each color */}
+      {colours.map((clr, index) => (
         <ColourSelector
           key={index}
-          color={item.color}
-          label={item.label}
-          setSelectedColor={handleColorChange}
+          colour={clr}
+          onSelectColor={handleColorChange}
         />
       ))}
 
-      <div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
-        <Selection color={selectedColor} />
-        <Selection color={selectedColor} />
-        <Selection color={selectedColor} />
+      {/* render three boxes */}
+      <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
+        <Selection selectedColor={selectedColor} />
+        <Selection selectedColor={selectedColor} />
+        <Selection selectedColor={selectedColor} />
       </div>
     </div>
   );
 }
 
 export default App;
+
