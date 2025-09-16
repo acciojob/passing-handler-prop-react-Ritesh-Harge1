@@ -1,12 +1,12 @@
 import React from "react";
 
-function ColourSelector({ colour, onSelectColor }) {
+function ColourSelector({ config, selectNextBackground }) {
   return (
     <button
-      onClick={() => onSelectColor(colour)}
-      style={{ margin: "5px", padding: "10px" }}
+      className="colorSelector"
+      onClick={() => selectNextBackground(config.key)}
     >
-      {colour}
+      {config.label}
     </button>
   );
 }
