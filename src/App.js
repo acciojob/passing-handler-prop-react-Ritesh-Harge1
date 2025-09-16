@@ -1,40 +1,36 @@
-import React, { useState } from "react";
-import ColourSelector from "./components/ColourSelector";
-import Selection from "./components/Selection";
+import React, { useState } from 'react';
+import ColourSelector from './ColourSelector';
+import Selection from './Selection';
 
-function App() {
+const colorOptions = [
+  "red",
+  "green",
+  "blue",
+  "yellow",
+  "purple"
+];
+
+const App = () => {
   const [selectedColor, setSelectedColor] = useState("");
 
-  // handler function
   const handleColorChange = (color) => {
     setSelectedColor(color);
   };
 
-  // list of colors (can be extended)
-  const colours = ["red", "blue", "green"];
-
   return (
-    <div className="App" style={{ textAlign: "center", marginTop: "20px" }}>
-      <h1>Handler Prop Demo</h1>
-
-      {/* render buttons for each color */}
-      {colours.map((clr, index) => (
+    <div id="app">
+      <h1>Color Selector</h1>
+      <div className="container">
         <ColourSelector
-          key={index}
-          colour={clr}
-          onSelectColor={handleColorChange}
+          colors={colorOptions}
+          onColorChange={handleColorChange}
         />
-      ))}
-
-      {/* render three boxes */}
-      <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
         <Selection selectedColor={selectedColor} />
         <Selection selectedColor={selectedColor} />
         <Selection selectedColor={selectedColor} />
       </div>
     </div>
   );
-}
+};
 
 export default App;
-
