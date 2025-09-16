@@ -1,22 +1,14 @@
 import React from "react";
 
-const ColourSelector = ({ color, label, setSelectedColor }) => {
+function ColourSelector({ colour, onSelectColor }) {
   return (
     <button
-      style={{
-        backgroundColor: color,
-        color: "white",
-        padding: "10px 20px",
-        margin: "5px",
-        border: "none",
-        borderRadius: "5px",
-        cursor: "pointer",
-      }}
-      onClick={() => setSelectedColor(color)}
+      onClick={() => onSelectColor(colour)}
+      style={{ margin: "5px", padding: "10px" }}
     >
-      {label}
+      {colour}
     </button>
   );
-};
+}
 
 export default ColourSelector;
